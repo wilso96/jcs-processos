@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JCS-Processos - Login</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <!-- Lado esquerdo - Informações -->
+        <div class="login-side">
+            <div class="brand">
+                <div class="brand-badge">J</div>
+                <div>
+                    <h1>JCS-Processos</h1>
+                    <p class="subtitle">Gestão operacional com rastreabilidade</p>
+                </div>
+            </div>
+            <h2>Controle, segurança e supervisão em um único sistema.</h2>
+            <p>Sistema completo para gestão de processos operacionais. Foco em tarefas, checklists por setor, equipes e alertas para supervisores.</p>
+            <div class="bullet-list">
+                <div class="bullet">✔ Checklists por função, setor e turno</div>
+                <div class="bullet">✔ Gestão de equipes e tarefas</div>
+                <div class="bullet">✔ Alertas para pendências do supervisor</div>
+                <div class="bullet">✔ Dashboard simples para supervisão operacional</div>
+            </div>
+        </div>
+        
+        <!-- Lado direito - Formulário -->
+        <div class="login-form-container">
+            <div class="eyebrow">Acesso ao sistema</div>
+            <h3>Entrar na plataforma</h3>
+            <p class="form-subtitle">Digite suas credenciais para acessar o sistema.</p>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">E-mail ou Login</label>
+                    <input type="text" id="email" name="email" required placeholder="seu@email.com ou login">
+                </div>
+                <div class="form-group">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" name="senha" required placeholder="Sua senha">
+                </div>
+                <div id="loginError" class="error-message" style="display: none;"></div>
+                <button type="submit" class="btn btn-primary btn-block">
+                    <span class="btn-text">Entrar</span>
+                    <span class="btn-loader" style="display: none;">
+                        <svg class="spinner" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="60 40"></circle>
+                        </svg>
+                    </span>
+                </button>
+            </form>
+            
+            <div class="divider"></div>
+            <div class="footer-note">
+                Sistema JCS-Processos • Versão 1.0
+            </div>
+        </div>
+    </div>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

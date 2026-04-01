@@ -1,0 +1,29 @@
+{
+  "expo": {
+    "name": "JCS Colaborador",
+    "slug": "jcs-colaborador",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+
+    "splash": {
+      "backgroundColor": "#007bff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jcs.colaborador"
+    },
+    "android": {
+      "package": "com.jcs.colaborador",
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_NETWORK_STATE"
+      ]
+    },
+    "plugins": []
+  }
+}

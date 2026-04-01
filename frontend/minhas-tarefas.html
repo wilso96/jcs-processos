@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Tarefas - JCS-Processos</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* ===== Checklist Specific Styles ===== */
+        .checklist-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        
+        .checklist-header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text);
+        }
+        
+        .checklist-stats {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .stat-card {
+            background: var(--panel);
+            border-radius: var(--radius-sm);
+            padding: 12px 20px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(83, 113, 160, 0.08);
+            border: 1px solid var(--border-color);
+        }
+        
+        .stat-card .number {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .stat-card .label {
+            font-size: 12px;
+            color: var(--muted);
+            text-transform: uppercase;
+        }
+        
+        .stat-card.pending .number { color: var(--warning); }
+        .stat-card.done .number { color: var(--success); }
+        
+        /* Filter Tabs */
+        .filter-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-tab {
+            padding: 8px 16px;
+            border-radius: var(--radius-xs);
+            background: var(--panel);
+            border: 1px solid var(--border-color);
+            color: var(--text-light);
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .filter-tab:hover {
+            background: var(--primary-3);
+            border-color: var(--primary);
+        }
+        
+        .filter-tab.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        /* Process Group */
+        .process-group {
+            margin-bottom: 24px;
+        }
+        
+        .process-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: var(--panel-2);
+            border-radius: var(--radius-sm);
+            margin-bottom: 12px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .process-header h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text);
+            flex: 1;
+        }
+        
+        .process-progress {
+            font-size: 13px;
+            color: var(--muted);
+        }
+        
+        .process-progress-bar {
+            width: 100px;
+            height: 6px;
+            background: var(--border-color);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .process-progress-fill {
+            height: 100%;
+            background: var(--success);
+            transition: width 0.3s ease;
+        }
+        
+        /* Task Item */
+        .task-item {
+            background: var(--panel);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            margin-bottom: 10px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            transition: var(--transition);
+        }
+        
+        .task-item:hover {
+            box-shadow: 0 4px 12px rgba(83, 113, 160, 0.1);
+        }
+        
+        .task-item.completed {
+            background: #fafdff;
+            opacity: 0.8;
+        }
+        
+        .task-item.completed .task-title {
+            text-decoration: line-through;
+            color: var(--muted);
+        }
+        
+        /* Checkbox Custom */
+        .task-checkbox {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            margin-top: 2px;
+        }
+        
+        .task-checkbox input {
+            display: none;
+        }
+        
+        .checkbox-custom {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            background: white;
+        }
+        
+        .task-checkbox input:checked + .checkbox-custom {
+            background: var(--success);
+            border-color: var(--success);
+        }
+        
+        .task-checkbox input:checked + .checkbox-custom svg {
+            display: block;
+        }
+        
+        .checkbox-custom svg {
+            display: none;
+            width: 14px;
+            height: 14px;
+            color: white;
+        }
+        
+        .task-checkbox:hover .checkbox-custom {
+            border-color: var(--success);
+        }
+        
+        /* Task Content */
+        .task-content {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .task-title {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+        
+        .task-description {
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+        
+        .task-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+        
+        .task-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+        
+        .task-badge svg {
+            width: 12px;
+            height: 12px;
+        }
+        
+        .task-badge.priority-high {
+            background: #ffe2e2;
+            color: #c84747;
+        }
+        
+        .task-badge.priority-medium {
+            background: #fff1d9;
+            color: #b96b00;
+        }
+        
+        .task-badge.priority-low {
+            background: #ddf7ea;
+            color: #118a62;
+        }
+        
+        .task-badge.status-pendente {
+            background: #fff1d9;
+            color: #b96b00;
+        }
+        
+        .task-badge.status-em_execucao {
+            background: #eaf2ff;
+            color: #2b6ee8;
+        }
+        
+        .task-badge.status-concluida {
+            background: #ddf7ea;
+            color: #118a62;
+        }
+        
+        .task-badge.time {
+            background: var(--panel-2);
+            color: var(--muted);
+        }
+        
+        .task-badge.time.overdue {
+            background: #ffe2e2;
+            color: #c84747;
+        }
+        
+        /* Task Actions */
+        .task-actions {
+            display: flex;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+        
+        .btn-obs {
+            padding: 6px 12px;
+            background: var(--panel-2);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xs);
+            font-size: 12px;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .btn-obs:hover {
+            background: var(--primary-3);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-obs svg {
+            width: 14px;
+            height: 14px;
+        }
+        
+        /* Empty State */
+        .empty-checklist {
+            text-align: center;
+            padding: 60px 20px;
+            background: var(--panel);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+        }
+        
+        .empty-checklist svg {
+            width: 80px;
+            height: 80px;
+            color: var(--border-color);
+            margin-bottom: 20px;
+        }
+        
+        .empty-checklist h3 {
+            font-size: 18px;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+        
+        .empty-checklist p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+        
+        /* Modal Observacao */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background: var(--panel);
+            border-radius: var(--radius);
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow: auto;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+        
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+        
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h3 {
+            font-size: 18px;
+            color: var(--text);
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            color: var(--muted);
+        }
+        
+        .modal-close:hover {
+            color: var(--text);
+        }
+        
+        .modal-body {
+            padding: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 16px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+        
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xs);
+            font-size: 14px;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .modal-footer {
+            padding: 16px 20px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        /* Loading State */
+        .loading-state {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .spinner-large {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border-color);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 16px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .checklist-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .checklist-stats {
+                justify-content: space-between;
+            }
+            
+            .stat-card {
+                flex: 1;
+                padding: 10px;
+            }
+            
+            .task-item {
+                flex-wrap: wrap;
+            }
+            
+            .task-actions {
+                width: 100%;
+                margin-top: 8px;
+                padding-left: 38px;
+            }
+            
+            .process-progress {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-layout">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="brand-badge">J</div>
+                <div>
+                    <h2>JCS-Processos</h2>
+                    <p class="subtitle">Gestão operacional</p>
+                </div>
+            </div>
+            
+            <!-- Informações da Empresa -->
+            <div id="empresaInfo" class="empresa-info"></div>
+            
+            <!-- Menu Principal - visível para todos -->
+            <div class="nav-title" id="navPrincipal">Principal</div>
+            <div class="sidebar-nav" id="navPrincipalItems">
+                <!-- Dashboard - oculto para colaborador -->
+                <a href="dashboard.html" class="nav-item" id="navDashboard" style="display: none;">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                    Dashboard
+                </a>
+                <a href="minhas-tarefas.html" class="nav-item active">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                    </svg>
+                    Minhas Tarefas
+                </a>
+                <!-- Todas Tarefas - oculto para colaborador -->
+                <a href="tarefas.html" class="nav-item" id="navTodasTarefas" style="display: none;">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                    </svg>
+                    Todas Tarefas
+                </a>
+                <!-- Processos - oculto para colaborador -->
+                <a href="processos.html" class="nav-item" id="navProcessos" style="display: none;">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    Processos
+                </a>
+            </div>
+            
+            <!-- Cadastros - oculto para colaborador -->
+            <div class="nav-title" id="navCadastros" style="display: none;">Cadastros</div>
+            <div class="sidebar-nav" id="navCadastrosItems" style="display: none;">
+                <a href="usuarios.html" class="nav-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                    </svg>
+                    Usuários
+                </a>
+                <a href="areas.html" class="nav-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                    </svg>
+                    Áreas
+                </a>
+            </div>
+            
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar" id="userAvatar">--</div>
+                    <div class="user-details">
+                        <h4 id="userName">Carregando...</h4>
+                        <span id="userRole">--</span>
+                    </div>
+                </div>
+                <button class="btn-logout" onclick="logout()">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:16px;height:16px;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                    </svg>
+                    Sair
+                </button>
+            </div>
+        </nav>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-header">
+                <div>
+                    <h1>Minhas Tarefas</h1>
+                    <p class="subtitle">Execute e acompanhe suas tarefas do checklist</p>
+                </div>
+            </div>
+            
+            <div class="checklist-header">
+                <h1></h1>
+                <div class="checklist-stats">
+                    <div class="stat-card pending">
+                        <div class="number" id="pendingCount">0</div>
+                        <div class="label">Pendentes</div>
+                    </div>
+                    <div class="stat-card done">
+                        <div class="number" id="doneCount">0</div>
+                        <div class="label">Concluídas</div>
+                    </div>
+                </div>
+                <!-- Botão para gerar tarefas do dia (para admin/supervisor) -->
+                <button class="btn btn-primary" onclick="gerarTarefasDoDia()" id="btnGerarTarefas" style="display: none;">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:16px;height:16px;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                    </svg>
+                    Gerar Tarefas do Dia
+                </button>
+            </div>
+            
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">Todas</button>
+                <button class="filter-tab" data-filter="pendente">Pendentes</button>
+                <button class="filter-tab" data-filter="em_execucao">Em Execução</button>
+                <button class="filter-tab" data-filter="concluida">Concluídas</button>
+            </div>
+            
+            <div id="tasksContainer">
+                <div class="loading-state">
+                    <div class="spinner-large"></div>
+                    <p>Carregando suas tarefas...</p>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Modal Observação -->
+    <div class="modal-overlay" id="obsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Adicionar Observação</h3>
+                <button class="modal-close" onclick="fecharModalObs()">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:20px;height:20px;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="obsTaskTitle" style="margin-bottom: 12px; color: var(--text-light); font-size: 14px;"></p>
+                <div class="form-group">
+                    <label for="obsText">Observação</label>
+                    <textarea id="obsText" placeholder="Digite sua observação sobre a execução desta tarefa..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-soft" onclick="fecharModalObs()">Cancelar</button>
+                <button class="btn-primary" onclick="salvarObservacao()">Salvar</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/minhas-tarefas.js"></script>
+    <script src="js/empresa.js"></script>
+    
+    <!-- Script para controlar visibilidade dos menus baseado no perfil -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verificar se é colaborador e ocultar menus administrativos
+            if (typeof isColaborador === 'function' && isColaborador()) {
+                // Ocultar Dashboard, Todas Tarefas e Processos
+                var navDashboard = document.getElementById('navDashboard');
+                var navTodasTarefas = document.getElementById('navTodasTarefas');
+                var navProcessos = document.getElementById('navProcessos');
+                var navCadastros = document.getElementById('navCadastros');
+                var navCadastrosItems = document.getElementById('navCadastrosItems');
+                var btnGerarTarefas = document.getElementById('btnGerarTarefas');
+                
+                if (navDashboard) navDashboard.style.display = 'none';
+                if (navTodasTarefas) navTodasTarefas.style.display = 'none';
+                if (navProcessos) navProcessos.style.display = 'none';
+                if (navCadastros) navCadastros.style.display = 'none';
+                if (navCadastrosItems) navCadastrosItems.style.display = 'none';
+                if (btnGerarTarefas) btnGerarTarefas.style.display = 'none';
+            } else {
+                // Mostrar menus administrativos para admin/supervisor
+                var navDashboard = document.getElementById('navDashboard');
+                var navTodasTarefas = document.getElementById('navTodasTarefas');
+                var navProcessos = document.getElementById('navProcessos');
+                var navCadastros = document.getElementById('navCadastros');
+                var navCadastrosItems = document.getElementById('navCadastrosItems');
+                var btnGerarTarefas = document.getElementById('btnGerarTarefas');
+                
+                if (navDashboard) navDashboard.style.display = '';
+                if (navTodasTarefas) navTodasTarefas.style.display = '';
+                if (navProcessos) navProcessos.style.display = '';
+                if (navCadastros) navCadastros.style.display = '';
+                if (navCadastrosItems) navCadastrosItems.style.display = '';
+                if (btnGerarTarefas) btnGerarTarefas.style.display = '';
+            }
+        });
+        
+        // Função para gerar tarefas do dia (para admin/supervisor)
+        async function gerarTarefasDoDia() {
+            try {
+                var response = await fetch(API_BASE_URL + '/tarefas-recorrentes/gerar-diarias', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + api.getToken()
+                    }
+                });
+                
+                if (response.ok) {
+                    var data = await response.json();
+                    alert(data.mensagem);
+                    // Recarregar tarefas
+                    if (typeof carregarTarefas === 'function') {
+                        carregarTarefas();
+                    }
+                } else {
+                    alert('Erro ao gerar tarefas do dia');
+                }
+            } catch (error) {
+                console.error('Erro:', error);
+                alert('Erro ao gerar tarefas do dia');
+            }
+        }
+    </script>
+</body>
+</html>

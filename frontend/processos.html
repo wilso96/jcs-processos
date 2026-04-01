@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processos - JCS-Processos</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="main-layout">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="brand-badge">J</div>
+                <div>
+                    <h2>JCS-Processos</h2>
+                    <p class="subtitle">Gestão operacional</p>
+                </div>
+            </div>
+            
+            <!-- Informações da Empresa -->
+            <div id="empresaInfo" class="empresa-info"></div>
+            
+            <div class="nav-title">Principal</div>
+            <div class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                    Dashboard
+                </a>
+                <a href="tarefas.html" class="nav-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                    </svg>
+                    Tarefas
+                </a>
+                <a href="minhas-tarefas.html" class="nav-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                    </svg>
+                    Minhas Tarefas
+                </a>
+                <a href="processos.html" class="nav-item active">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    Processos
+                </a>
+                <a href="equipes.html" class="nav-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                    Equipes
+                </a>
+            </div>
+            
+            <div class="nav-title">Cadastros</div>
+            <div class="sidebar-nav">
+                <a href="usuarios.html" class="nav-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                    </svg>
+                    Usuários
+                </a>
+                <a href="areas.html" class="nav-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                    </svg>
+                    Áreas
+                </a>
+                <a href="unidades.html" class="nav-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
+                    </svg>
+                    Unidades
+                </a>
+            </div>
+            
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar" id="userAvatar">--</div>
+                    <div class="user-details">
+                        <h4 id="userName">Carregando...</h4>
+                        <span id="userRole">--</span>
+                    </div>
+                </div>
+                <button class="btn-logout" onclick="logout()">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:16px;height:16px;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                    </svg>
+                    Sair
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <div class="page-header-content">
+                    <h1>Processos</h1>
+                    <p>Gerenciamento de processos do sistema</p>
+                </div>
+                <div class="page-actions">
+                    <button class="btn btn-soft" onclick="loadProcessos()">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:16px;height:16px;">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                        </svg>
+                        Atualizar
+                    </button>
+                    <button class="btn btn-primary" onclick="openNovoProcessoModal()">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:16px;height:16px;">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                        </svg>
+                        Novo Processo
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filtros de Processos -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>Lista de Processos</h2>
+                    <div class="filters-bar">
+                        <select id="filtroEquipe" onchange="filtrarPorEquipe()">
+                            <option value="">Todas as Equipes</option>
+                        </select>
+                        <select id="filtroStatus" onchange="filtrarPorEquipe()">
+                            <option value="">Todos os Status</option>
+                            <option value="ativo">Ativo</option>
+                            <option value="inativo">Inativo</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Equipe</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="processosTable">
+                            <tr>
+                                <td colspan="4" class="empty-state">
+                                    <p>Carregando processos...</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/empresa.js"></script>
+    
+    <!-- Verificação de permissão - colaborador redirecionado -->
+    <script>
+        if (typeof isColaborador === 'function' && isColaborador()) {
+            window.location.href = 'minhas-tarefas.html';
+        }
+    </script>
+
+    <!-- Modal Novo Processo -->
+    <div id="modalNovoProcesso" class="modal" style="display:none;">
+        <div class="modal-content" style="max-width:600px;">
+            <div class="modal-header">
+                <h2>Novo Processo</h2>
+                <button class="modal-close" onclick="closeNovoProcessoModal()">&times;</button>
+            </div>
+            <form id="formNovoProcesso" onsubmit="salvarNovoProcesso(event)">
+                <div class="form-grid" style="grid-template-columns:1fr 1fr;">
+                    <div class="form-group" style="grid-column:span 2;">
+                        <label for="processoNome">Nome do Processo *</label>
+                        <input type="text" id="processoNome" name="nome" required placeholder="Ex: Checklist Diário de Produção">
+                    </div>
+                    
+                    <div class="form-group" style="grid-column:span 2;">
+                        <label for="processoDescricao">Descrição</label>
+                        <textarea id="processoDescricao" name="descricao" rows="3" placeholder="Descreva o objetivo deste processo..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="processoModelo">Modelo de Checklist *</label>
+                        <select id="processoModelo" name="id_modelo" required onchange="onModeloChange()">
+                            <option value="">Selecione um modelo...</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="processoArea">Área *</label>
+                        <select id="processoArea" name="id_area" required onchange="onAreaChange()">
+                            <option value="">Selecione uma área...</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="processoUnidade">Unidade *</label>
+                        <select id="processoUnidade" name="id_unidade" required>
+                            <option value="">Selecione uma unidade...</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="processoResponsavel">Responsável</label>
+                        <select id="processoResponsavel" name="responsavel_id">
+                            <option value="">Selecione um responsável...</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="processoEquipe">Equipe</label>
+                        <select id="processoEquipe" name="id_equipe">
+                            <option value="">Selecione uma equipe...</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="processoDataInicio">Data de Início</label>
+                        <input type="date" id="processoDataInicio" name="data_inicio">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="processoDataFim">Data de Término</label>
+                        <input type="date" id="processoDataFim" name="data_fim">
+                    </div>
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-soft" onclick="closeNovoProcessoModal()">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" id="btnSalvarProcesso">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:16px;height:16px;">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Salvar Processo
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts específicos de processos -->
+    <script>
+        // Variáveis globais
+        let modelosData = [];
+        let areasData = [];
+        let unidadesData = [];
+        let usuariosData = [];
+        let equipesData = [];
+        
+        // Carregar processos ao iniciar a página
+        document.addEventListener('DOMContentLoaded', function() {
+            loadEquipes();
+            loadProcessos();
+        });
+
+        // Carregar equipes para os filtros
+        async function loadEquipes() {
+            try {
+                equipesData = await api.get('/equipes');
+                const filtroSelect = document.getElementById('filtroEquipe');
+                filtroSelect.innerHTML = '<option value="">Todas as Equipes</option>' +
+                    equipesData.map(e => `<option value="${e.id}">${escapeHtml(e.nome)}</option>`).join('');
+            } catch (err) {
+                console.error('Erro ao carregar equipes:', err);
+            }
+        }
+
+        // Função para carregar e exibir processos na tabela
+        async function loadProcessos() {
+            const table = document.getElementById('processosTable');
+            table.innerHTML = `
+                <tr>
+                    <td colspan="4" class="empty-state">
+                        <p>Carregando processos...</p>
+                    </td>
+                </tr>
+            `;
+
+            try {
+                // Coletar filtros
+                const filtros = {};
+                const idEquipe = document.getElementById('filtroEquipe').value;
+                const status = document.getElementById('filtroStatus').value;
+                
+                if (idEquipe) filtros.id_equipe = idEquipe;
+                if (status) filtros.status = status;
+                
+                // Construir query string
+                const queryString = new URLSearchParams(filtros).toString();
+                const url = queryString ? `/processos?${queryString}` : '/processos';
+                
+                const processos = await api.get(url);
+                
+                if (processos.length === 0) {
+                    table.innerHTML = `
+                        <tr>
+                            <td colspan="4" class="empty-state">
+                                <p>Nenhum processo encontrado.</p>
+                                <small>Clique em "Novo Processo" para criar o primeiro.</small>
+                            </td>
+                        </tr>
+                    `;
+                    return;
+                }
+
+                table.innerHTML = processos.map(p => `
+                    <tr>
+                        <td>
+                            <strong>${escapeHtml(p.nome || '')}</strong>
+                        </td>
+                        <td>
+                            ${p.equipe_nome ? `<span class="badge-equipe">${escapeHtml(p.equipe_nome)}</span>` : '<span class="text-muted">Sem equipe</span>'}
+                        </td>
+                        <td>
+                            <span class="status-badge ${p.status === 'ativo' ? 'status-ativo' : 'status-inativo'}">
+                                ${p.status === 'ativo' ? 'Ativo' : 'Inativo'}
+                            </span>
+                        </td>
+                        <td>
+                            <div class="table-actions">
+                                <button class="action-btn" onclick="visualizarProcesso(${p.id})" title="Visualizar">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:16px;height:16px;">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                    </svg>
+                                </button>
+                                <button class="action-btn" onclick="editarProcesso(${p.id})" title="Editar">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:16px;height:16px;">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                    </svg>
+                                </button>
+                                <button class="action-btn action-danger" onclick="excluirProcesso(${p.id})" title="Excluir">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:16px;height:16px;">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `).join('');
+            } catch (err) {
+                console.error('Erro ao carregar processos:', err);
+                table.innerHTML = `
+                    <tr>
+                        <td colspan="4" class="empty-state">
+                            <p>Erro ao carregar processos: ${err.message || err.erro || 'Erro desconhecido'}</p>
+                        </td>
+                    </tr>
+                `;
+            }
+        }
+
+        // Filtrar por equipe
+        function filtrarPorEquipe() {
+            loadProcessos();
+        }
+
+        // Funções placeholder para ações da tabela
+        async function visualizarProcesso(id) {
+            try {
+                const processo = await api.get(`/processos/${id}`);
+                alert(`Detalhes do Processo:\n\nNome: ${processo.nome}\nDescrição: ${processo.descricao || 'N/A'}\nStatus: ${processo.status}\nÁrea: ${processo.area_nome || 'N/A'}\nUnidade: ${processo.unidade_nome || 'N/A'}\nResponsável: ${processo.responsavel_nome || 'N/A'}`);
+            } catch (err) {
+                showToast('Erro ao carregar detalhes: ' + (err.message || 'Erro desconhecido'), 'error');
+            }
+        }
+
+        async function editarProcesso(id) {
+            showToast('Funcionalidade de edição em desenvolvimento', 'info');
+        }
+
+        async function excluirProcesso(id) {
+            if (!confirm('Tem certeza que deseja excluir este processo?')) return;
+            
+            try {
+                await api.delete(`/processos/${id}`);
+                showToast('Processo excluído com sucesso!', 'success');
+                loadProcessos();
+            } catch (err) {
+                showToast('Erro ao excluir processo: ' + (err.message || 'Erro desconhecido'), 'error');
+            }
+        }
+
+        // Função para escapar HTML e evitar XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Função para abrir o modal de novo processo
+        async function openNovoProcessoModal() {
+            const modal = document.getElementById('modalNovoProcesso');
+            modal.style.display = 'flex';
+            document.getElementById('formNovoProcesso').reset();
+            document.getElementById('processoDataInicio').value = new Date().toISOString().split('T')[0];
+            
+            // Carregar dados se ainda não carregados
+            await Promise.all([
+                loadModelosIfNeeded(),
+                loadAreasIfNeeded(),
+                loadUnidadesIfNeeded(),
+                loadUsuariosIfNeeded(),
+                loadEquipesIfNeeded()
+            ]);
+        }
+
+        // Carregar equipes se ainda não carregadas
+        async function loadEquipesIfNeeded() {
+            if (equipesData.length === 0) {
+                try {
+                    equipesData = await api.get('/equipes');
+                    populateSelect('processoEquipe', equipesData, 'id', 'nome', 'Selecione uma equipe...');
+                } catch (err) {
+                    console.error('Erro ao carregar equipes:', err);
+                }
+            }
+        }
+
+        // Função para fechar o modal
+        function closeNovoProcessoModal() {
+            const modal = document.getElementById('modalNovoProcesso');
+            modal.style.display = 'none';
+        }
+
+        // Fechar modal ao clicar fora
+        document.addEventListener('click', function(e) {
+            const modal = document.getElementById('modalNovoProcesso');
+            if (e.target === modal) {
+                closeNovoProcessoModal();
+            }
+        });
+
+        // Carregar modelos se ainda não carregados
+        async function loadModelosIfNeeded() {
+            if (modelosData.length === 0) {
+                try {
+                    modelosData = await api.get('/modelos');
+                    populateSelect('processoModelo', modelosData, 'id', 'nome', 'Selecione um modelo...');
+                } catch (err) {
+                    console.error('Erro ao carregar modelos:', err);
+                }
+            }
+        }
+
+        // Carregar áreas se ainda não carregadas
+        async function loadAreasIfNeeded() {
+            if (areasData.length === 0) {
+                try {
+                    areasData = await api.get('/areas');
+                    populateSelect('processoArea', areasData, 'id', 'nome', 'Selecione uma área...');
+                } catch (err) {
+                    console.error('Erro ao carregar áreas:', err);
+                }
+            }
+        }
+
+        // Carregar unidades se ainda não carregadas
+        async function loadUnidadesIfNeeded() {
+            if (unidadesData.length === 0) {
+                try {
+                    unidadesData = await api.get('/unidades');
+                    populateSelect('processoUnidade', unidadesData, 'id', 'nome', 'Selecione uma unidade...');
+                } catch (err) {
+                    console.error('Erro ao carregar unidades:', err);
+                }
+            }
+        }
+
+        // Carregar usuários se ainda não carregados
+        async function loadUsuariosIfNeeded() {
+            if (usuariosData.length === 0) {
+                try {
+                    usuariosData = await api.get('/usuarios');
+                    populateSelect('processoResponsavel', usuariosData, 'id', 'nome', 'Selecione um responsável...');
+                } catch (err) {
+                    console.error('Erro ao carregar usuários:', err);
+                }
+            }
+        }
+
+        // Função para popular um select
+        function populateSelect(selectId, data, valueField, textField, placeholder) {
+            const select = document.getElementById(selectId);
+            select.innerHTML = `<option value="">${placeholder}</option>`;
+            data.forEach(item => {
+                const option = document.createElement('option');
+                option.value = item[valueField];
+                option.textContent = item[textField];
+                select.appendChild(option);
+            });
+        }
+
+        // Quando mudar o modelo, preenche área automaticamente se disponível
+        function onModeloChange() {
+            const modeloId = document.getElementById('processoModelo').value;
+            if (modeloId) {
+                const modelo = modelosData.find(m => m.id == modeloId);
+                if (modelo && modelo.id_area) {
+                    document.getElementById('processoArea').value = modelo.id_area;
+                }
+            }
+        }
+
+        // Placeholder para área change (para futuras validações)
+        function onAreaChange() {
+            // Área alterada
+        }
+
+        // Salvar novo processo
+        async function salvarNovoProcesso(event) {
+            event.preventDefault();
+            
+            const btn = document.getElementById('btnSalvarProcesso');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="spinner"></span> Salvando...';
+            btn.disabled = true;
+
+            const formData = new FormData(document.getElementById('formNovoProcesso'));
+            const dados = {};
+            
+            for (let [key, value] of formData.entries()) {
+                if (value !== '') {
+                    // Converter para número se for um ID
+                    if (key === 'id_modelo' || key === 'id_area' || key === 'id_unidade' || key === 'responsavel_id' || key === 'id_equipe') {
+                        dados[key] = parseInt(value);
+                    } else {
+                        dados[key] = value;
+                    }
+                }
+            }
+
+            try {
+                await api.post('/processos', dados);
+                
+                // Fechar modal e recarregar lista
+                closeNovoProcessoModal();
+                loadProcessos();
+                
+                // Mostrar mensagem de sucesso
+                showToast('Processo criado com sucesso!', 'success');
+            } catch (err) {
+                console.error('Erro ao criar processo:', err);
+                showToast('Erro ao criar processo: ' + (err.message || err.erro || 'Erro desconhecido'), 'error');
+            } finally {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        }
+
+        // Toast notification
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            toast.innerHTML = `
+                <span>${message}</span>
+                <button onclick="this.parentElement.remove()">×</button>
+            `;
+            document.body.appendChild(toast);
+            
+            // Adicionar estilos se não existirem
+            if (!document.getElementById('toast-styles')) {
+                const style = document.createElement('style');
+                style.id = 'toast-styles';
+                style.textContent = `
+                    .toast {
+                        position: fixed;
+                        bottom: 20px;
+                        right: 20px;
+                        padding: 16px 20px;
+                        border-radius: 8px;
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
+                        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                        z-index: 9999;
+                        animation: slideIn 0.3s ease;
+                        max-width: 400px;
+                    }
+                    .toast-success { background: #10b981; color: white; }
+                    .toast-error { background: #ef4444; color: white; }
+                    .toast-info { background: #3b82f6; color: white; }
+                    .toast button { background: none; border: none; color: white; font-size: 20px; cursor: pointer; padding: 0; }
+                    @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+                    .spinner {
+                        display: inline-block;
+                        width: 16px;
+                        height: 16px;
+                        border: 2px solid rgba(255,255,255,0.3);
+                        border-radius: 50%;
+                        border-top-color: white;
+                        animation: spin 0.8s linear infinite;
+                        margin-right: 8px;
+                    }
+                    @keyframes spin { to { transform: rotate(360deg); } }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            setTimeout(() => toast.remove(), 5000);
+        }
+    </script>
+</body>
+</html>

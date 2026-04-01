@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarefas - JCS-Processos</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="main-layout">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="brand-badge">J</div>
+                <div>
+                    <h2>JCS-Processos</h2>
+                    <p class="subtitle">Gestão operacional</p>
+                </div>
+            </div>
+            
+            <!-- Informações da Empresa -->
+            <div id="empresaInfo" class="empresa-info"></div>
+            
+            <div class="nav-title">Principal</div>
+            <div class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                    Dashboard
+                </a>
+                <a href="tarefas.html" class="nav-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                    </svg>
+                    Tarefas
+                </a>
+                <a href="minhas-tarefas.html" class="nav-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                    </svg>
+                    Minhas Tarefas
+                </a>
+                <a href="processos.html" class="nav-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    Processos
+                </a>
+                <a href="equipes.html" class="nav-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                    Equipes
+                </a>
+            </div>
+            
+            <div class="nav-title">Cadastros</div>
+            <div class="sidebar-nav">
+                <a href="usuarios.html" class="nav-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                    </svg>
+                    Usuários
+                </a>
+                <a href="areas.html" class="nav-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                    </svg>
+                    Áreas
+                </a>
+                <a href="unidades.html" class="nav-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
+                    </svg>
+                    Unidades
+                </a>
+            </div>
+            
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar" id="userAvatar">--</div>
+                    <div class="user-details">
+                        <h4 id="userName">Carregando...</h4>
+                        <span id="userRole">--</span>
+                    </div>
+                </div>
+                <button class="btn-logout" onclick="logout()">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:16px;height:16px;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                    </svg>
+                    Sair
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <div class="page-header-content">
+                    <h1>Tarefas</h1>
+                    <p>Gerenciamento completo de tarefas operacionais</p>
+                </div>
+                <div class="page-actions">
+                    <button class="btn btn-soft" onclick="loadTarefas()">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:16px;height:16px;">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                        </svg>
+                        Atualizar
+                    </button>
+                    <button class="btn btn-primary" onclick="openTarefaModal()">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:16px;height:16px;">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                        </svg>
+                        Nova Tarefa
+                    </button>
+                </div>
+            </div>
+
+            <!-- Statistics Cards -->
+            <div class="stats-grid" id="statsGrid">
+                <div class="stat-card">
+                    <small>Total</small>
+                    <strong id="statTotal">0</strong>
+                    <span>tarefas cadastradas</span>
+                </div>
+                <div class="stat-card">
+                    <small>Pendentes</small>
+                    <strong id="statPendentes">0</strong>
+                    <span>aguardando execução</span>
+                </div>
+                <div class="stat-card">
+                    <small>Em Andamento</small>
+                    <strong id="statEmAndamento">0</strong>
+                    <span>em execução</span>
+                </div>
+                <div class="stat-card">
+                    <small>Concluídas</small>
+                    <strong id="statConcluidas">0</strong>
+                    <span>finalizadas</span>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="card" style="margin-bottom: 18px;">
+                <div class="card-body" style="padding: 16px 22px;">
+                    <div class="filters">
+                        <select id="filterStatus" class="filter-select" onchange="loadTarefas()" style="padding: 8px 12px; border: 1px solid var(--border-color); border-radius: var(--radius-xs); background: white;">
+                            <option value="">Todos os Status</option>
+                            <option value="pendente">Pendente</option>
+                            <option value="em_andamento">Em Andamento</option>
+                            <option value="concluida">Concluída</option>
+                            <option value="cancelada">Cancelada</option>
+                        </select>
+                        <select id="filterPrioridade" class="filter-select" onchange="loadTarefas()" style="padding: 8px 12px; border: 1px solid var(--border-color); border-radius: var(--radius-xs); background: white;">
+                            <option value="">Todas Prioridades</option>
+                            <option value="baixa">Baixa</option>
+                            <option value="media">Média</option>
+                            <option value="alta">Alta</option>
+                            <option value="urgente">Urgente</option>
+                        </select>
+                        <input type="date" id="filterDataDe" class="filter-input" onchange="loadTarefas()" style="padding: 8px 12px; border: 1px solid var(--border-color); border-radius: var(--radius-xs);">
+                        <span style="color: var(--muted);">até</span>
+                        <input type="date" id="filterDataAte" class="filter-input" onchange="loadTarefas()" style="padding: 8px 12px; border: 1px solid var(--border-color); border-radius: var(--radius-xs);">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarefas Table -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>Lista de Tarefas</h2>
+                    <span id="totalCount" class="badge badge-blue">0 tarefa(s)</span>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Título</th>
+                                <th>Prioridade</th>
+                                <th>Responsável</th>
+                                <th>Equipe</th>
+                                <th>Data Programada</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tarefasTable">
+                            <tr>
+                                <td colspan="7" class="empty-state">
+                                    <p>Carregando tarefas...</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Pagination -->
+                <div id="paginationContainer" class="pagination-container"></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Tarefa -->
+    <div id="tarefaModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;">
+        <div class="modal-content" style="background: white; border-radius: var(--radius); padding: 28px; max-width: 600px; width: 90%; max-height: 90vh; overflow-y: auto; box-shadow: 0 25px 60px rgba(0,0,0,0.3);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h3 id="modalTitle" style="margin: 0; color: #12345d;">Nova Tarefa</h3>
+                <button onclick="closeTarefaModal()" style="background: none; border: none; cursor: pointer; padding: 8px;">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 24px; height: 24px; color: #64748b;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <form id="tarefaForm">
+                <input type="hidden" id="tarefaId">
+                
+                <div class="form-group">
+                    <label for="tarefaTitulo">Título *</label>
+                    <input type="text" id="tarefaTitulo" required placeholder="Ex.: Verificar EPI do turno">
+                </div>
+                
+                <div class="form-group">
+                    <label for="tarefaDescricao">Descrição</label>
+                    <textarea id="tarefaDescricao" rows="3" placeholder="Descreva a tarefa..."></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="tarefaPrioridade">Prioridade</label>
+                        <select id="tarefaPrioridade">
+                            <option value="baixa">Baixa</option>
+                            <option value="media" selected>Média</option>
+                            <option value="alta">Alta</option>
+                            <option value="urgente">Urgente</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tarefaStatus">Status</label>
+                        <select id="tarefaStatus">
+                            <option value="pendente">Pendente</option>
+                            <option value="em_andamento">Em Andamento</option>
+                            <option value="concluida">Concluída</option>
+                            <option value="cancelada">Cancelada</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="tarefaData">Data Programada *</label>
+                        <input type="date" id="tarefaData" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tarefaHora">Hora</label>
+                        <input type="time" id="tarefaHora">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="tarefaResponsavel">Responsável</label>
+                        <select id="tarefaResponsavel">
+                            <option value="">Selecione...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tarefaEquipe">Equipe</label>
+                        <select id="tarefaEquipe">
+                            <option value="">Selecione...</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tarefaObservacao">Observação</label>
+                    <textarea id="tarefaObservacao" rows="2" placeholder="Observações adicionais..."></textarea>
+                </div>
+                
+                <!-- Campos de Recorrência -->
+                <div style="background: #f8fafc; padding: 16px; border-radius: 8px; margin-top: 16px; border: 1px solid var(--border-color);">
+                    <h4 style="margin: 0 0 12px 0; color: #16375f; font-size: 14px;">⚡ Configurações de Recorrência</h4>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="tarefaOrdemExecucao">Ordem de Execução</label>
+                            <input type="number" id="tarefaOrdemExecucao" min="0" value="0" placeholder="1, 2, 3..." style="width: 100px;">
+                            <small style="color: var(--muted); display: block; margin-top: 4px;">Define a posição na fila de tarefas</small>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                            <input type="checkbox" id="tarefaDiaria" onchange="toggleDiasSemana()">
+                            <strong>Tarefa Diária</strong>
+                        </label>
+                        <small style="color: var(--muted);">Marque se esta tarefa deve aparecer todos os dias</small>
+                    </div>
+                    
+                    <div class="form-group" id="diasSemanaContainer" style="display: none;">
+                        <label>Dias da Semana</label>
+                        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px;">
+                            <label style="display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                                <input type="checkbox" name="diasSemana" value="1"> Dom
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                                <input type="checkbox" name="diasSemana" value="2"> Seg
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                                <input type="checkbox" name="diasSemana" value="3"> Ter
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                                <input type="checkbox" name="diasSemana" value="4"> Qua
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                                <input type="checkbox" name="diasSemana" value="5"> Qui
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                                <input type="checkbox" name="diasSemana" value="6"> Sex
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                                <input type="checkbox" name="diasSemana" value="7"> Sáb
+                            </label>
+                        </div>
+                        <small style="color: var(--muted);">Selecione os dias em que esta tarefa deve aparecer</small>
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px;">
+                    <button type="button" class="btn btn-soft" onclick="closeTarefaModal()">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Salvar Tarefa</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Visualizar Tarefa -->
+    <div id="viewTarefaModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;">
+        <div class="modal-content" style="background: white; border-radius: var(--radius); padding: 28px; max-width: 700px; width: 90%; max-height: 90vh; overflow-y: auto; box-shadow: 0 25px 60px rgba(0,0,0,0.3);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h3 style="margin: 0; color: #12345d;">Detalhes da Tarefa</h3>
+                <button onclick="closeViewTarefaModal()" style="background: none; border: none; cursor: pointer; padding: 8px;">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 24px; height: 24px; color: #64748b;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <div id="viewTarefaContent">
+                <!-- Conteúdo carregado via JavaScript -->
+            </div>
+            
+            <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border-color);">
+                <button type="button" class="btn btn-danger" id="btnExcluirTarefa" onclick="excluirTarefa()">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:16px;height:16px;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                    </svg>
+                    Excluir
+                </button>
+                <button type="button" class="btn btn-soft" onclick="editarTarefaAtual()">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:16px;height:16px;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                    </svg>
+                    Editar
+                </button>
+                <button type="button" class="btn btn-success" id="btnConcluirTarefa" onclick="concluirTarefaAtual()">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:16px;height:16px;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    Concluir
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" style="position: fixed; bottom: 20px; right: 20px; z-index: 2000;"></div>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/tarefas.js"></script>
+    <script src="js/empresa.js"></script>
+    
+    <!-- Verificação de permissão - colaborador redirecionado -->
+    <script>
+        if (typeof isColaborador === 'function' && isColaborador()) {
+            window.location.href = 'minhas-tarefas.html';
+        }
+        
+        // Toggle visibility of days of week selection
+        function toggleDiasSemana() {
+            var checkbox = document.getElementById('tarefaDiaria');
+            var container = document.getElementById('diasSemanaContainer');
+            if (container) {
+                container.style.display = checkbox.checked ? 'none' : 'block';
+            }
+        }
+    </script>
+</body>
+</html>

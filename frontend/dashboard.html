@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - JCS-Processos</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="main-layout">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="brand-badge">J</div>
+                <div>
+                    <h2>JCS-Processos</h2>
+                    <p class="subtitle">Gestão operacional</p>
+                </div>
+            </div>
+            
+            <!-- Informações da Empresa -->
+            <div id="empresaInfo" class="empresa-info"></div>
+            
+            <div class="nav-title" id="navPrincipal">Principal</div>
+            <div class="sidebar-nav" id="navPrincipalItems">
+                <a href="dashboard.html" class="nav-item active" id="navDashboard">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                    Dashboard
+                </a>
+                <!-- Tarefas - oculto para colaborador -->
+                <a href="tarefas.html" class="nav-item" id="navTarefas" style="display: none;">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                    </svg>
+                    Tarefas
+                </a>
+                <a href="minhas-tarefas.html" class="nav-item" id="navMinhasTarefas">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                    </svg>
+                    Minhas Tarefas
+                </a>
+                <!-- Processos - oculto para colaborador -->
+                <a href="processos.html" class="nav-item" id="navProcessos" style="display: none;">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    Processos
+                </a>
+                <!-- Equipes - oculto para colaborador -->
+                <a href="equipes.html" class="nav-item" id="navEquipes" style="display: none;">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                    Equipes
+                </a>
+            </div>
+            
+            <!-- Cadastros - oculto para colaborador -->
+            <div class="nav-title" id="navCadastros" style="display: none;">Cadastros</div>
+            <div class="sidebar-nav" id="navCadastrosItems" style="display: none;">
+                <a href="usuarios.html" class="nav-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                    </svg>
+                    Usuários
+                </a>
+                <a href="areas.html" class="nav-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                    </svg>
+                    Áreas
+                </a>
+                <a href="unidades.html" class="nav-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
+                    </svg>
+                    Unidades
+                </a>
+            </div>
+            
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar" id="userAvatar">--</div>
+                    <div class="user-details">
+                        <h4 id="userName">Carregando...</h4>
+                        <span id="userRole">--</span>
+                    </div>
+                </div>
+                <button class="btn-logout" onclick="logout()">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:16px;height:16px;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                    </svg>
+                    Sair
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <div class="page-header-content">
+                    <h1>Dashboard operacional</h1>
+                    <p>Visão geral do sistema JCS-Processos</p>
+                </div>
+                <div class="page-actions">
+                    <button class="btn btn-primary" onclick="loadDashboard()">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:16px;height:16px;">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                        </svg>
+                        Atualizar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Statistics Cards - Tarefas -->
+            <h3 style="margin: 0 0 16px; color: #16375f; font-size: 18px;">📋 Visão Geral de Tarefas</h3>
+            <div class="stats-grid" id="statsGrid">
+                <div class="stat-card">
+                    <small>Total de Tarefas</small>
+                    <strong id="totalTarefas">--</strong>
+                    <span>tarefas cadastradas</span>
+                </div>
+                <div class="stat-card">
+                    <small>Pendentes</small>
+                    <strong id="tarefasPendentes">--</strong>
+                    <span>aguardando execução</span>
+                </div>
+                <div class="stat-card">
+                    <small>Em Andamento</small>
+                    <strong id="tarefasEmAndamento">--</strong>
+                    <span>em execução</span>
+                </div>
+                <div class="stat-card">
+                    <small>Concluídas</small>
+                    <strong id="tarefasConcluidas">--</strong>
+                    <span>finalizadas</span>
+                </div>
+            </div>
+
+            <!-- Statistics - Sistema -->
+            <h3 style="margin: 24px 0 16px; color: #16375f; font-size: 18px;">🏢 Visão Geral do Sistema</h3>
+            <div class="stats-grid" style="grid-template-columns: repeat(4, minmax(0, 1fr));">
+                <div class="stat-card">
+                    <small>Total de Usuários</small>
+                    <strong id="totalUsuarios">--</strong>
+                    <span>colaboradores</span>
+                </div>
+                <div class="stat-card">
+                    <small>Total de Equipes</small>
+                    <strong id="totalEquipes">--</strong>
+                    <span>equipes ativas</span>
+                </div>
+                <div class="stat-card">
+                    <small>Total de Áreas</small>
+                    <strong id="totalAreas">--</strong>
+                    <span>áreas cadastradas</span>
+                </div>
+                <div class="stat-card">
+                    <small>Unidades</small>
+                    <strong id="totalUnidades">--</strong>
+                    <span>unidades ativas</span>
+                </div>
+            </div>
+
+            <!-- Content Grid -->
+            <div class="content-grid" style="margin-top: 24px;">
+                <!-- Recent Activity -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>📝 Tarefas Recentes</h2>
+                        <a href="tarefas.html" class="btn btn-soft" style="font-size: 13px; padding: 6px 12px;">Ver todas</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Tarefa</th>
+                                        <th>Responsável</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recentActivity">
+                                    <tr>
+                                        <td colspan="3" class="empty-state">
+                                            <p>Carregando tarefas...</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>⚡ Ações Rápidas</h2>
+                    </div>
+                    <div class="card-body">
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <a href="tarefas.html" class="btn btn-primary" style="text-align: left; justify-content: flex-start;">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:18px;height:18px;">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                                </svg>
+                                Nova Tarefa
+                            </a>
+                            <a href="usuarios.html" class="btn btn-soft" style="text-align: left; justify-content: flex-start;">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:18px;height:18px;">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                                </svg>
+                                Novo Usuário
+                            </a>
+                            <a href="equipes.html" class="btn btn-soft" style="text-align: left; justify-content: flex-start;">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:18px;height:18px;">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                </svg>
+                                Gerenciar Equipes
+                            </a>
+                            <a href="areas.html" class="btn btn-soft" style="text-align: left; justify-content: flex-start;">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:18px;height:18px;">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                                </svg>
+                                Gerenciar Áreas
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/empresa.js"></script>
+    
+    <!-- Script para controlar visibilidade dos menus baseado no perfil -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verificar se é colaborador e ocultar menus administrativos
+            if (typeof isColaborador === 'function' && isColaborador()) {
+                // Ocultar menus administrativos
+                var navTarefas = document.getElementById('navTarefas');
+                var navProcessos = document.getElementById('navProcessos');
+                var navEquipes = document.getElementById('navEquipes');
+                var navCadastros = document.getElementById('navCadastros');
+                var navCadastrosItems = document.getElementById('navCadastrosItems');
+                
+                if (navTarefas) navTarefas.style.display = 'none';
+                if (navProcessos) navProcessos.style.display = 'none';
+                if (navEquipes) navEquipes.style.display = 'none';
+                if (navCadastros) navCadastros.style.display = 'none';
+                if (navCadastrosItems) navCadastrosItems.style.display = 'none';
+                
+                // Redirecionar para Minhas Tarefas se tentar acessar o Dashboard
+                window.location.href = 'minhas-tarefas.html';
+            } else {
+                // Mostrar menus administrativos para admin/supervisor
+                var navTarefas = document.getElementById('navTarefas');
+                var navProcessos = document.getElementById('navProcessos');
+                var navEquipes = document.getElementById('navEquipes');
+                var navCadastros = document.getElementById('navCadastros');
+                var navCadastrosItems = document.getElementById('navCadastrosItems');
+                
+                if (navTarefas) navTarefas.style.display = '';
+                if (navProcessos) navProcessos.style.display = '';
+                if (navEquipes) navEquipes.style.display = '';
+                if (navCadastros) navCadastros.style.display = '';
+                if (navCadastrosItems) navCadastrosItems.style.display = '';
+            }
+        });
+    </script>
+</body>
+</html>
